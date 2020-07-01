@@ -1,4 +1,5 @@
 node_modules/
+fontend/node_modules/
 snapshot/
 upload/
 *.md

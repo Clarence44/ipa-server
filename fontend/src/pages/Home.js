@@ -90,7 +90,7 @@ function App(props) {
   const Tabs = (props) => {
     return (
       <div className="tabs">
-        {['Android', 'IOS'].map((item) => (
+        {['Android', 'ios'].map((item) => (
           <div
             className={item === state.platform ? 'tab on' : 'tab'}
             key={item}

@@ -45,7 +45,7 @@ export function langString(key) {
     Android: {
       'zh-cn': '安卓',
     },
-    IOS: {
+    ios: {
       'zh-cn': '苹果',
     },
     Upload: {
@@ -95,7 +95,7 @@ export function sizeStr(size) {
 }
 
 export const onClickInstall = (row) => {
-  if (row.platform === 'IOS') {
+  if (row.platform === 'ios') {
     window.location.href =
       'itms-services://?action=download-manifest&url=' + row.plist;
   } else {

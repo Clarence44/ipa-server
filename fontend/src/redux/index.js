@@ -16,7 +16,7 @@ if (isPC()) {
     : 'Android';
 } else {
   if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-    INITIAL_PLATFORM = 'IOS';
+    INITIAL_PLATFORM = 'ios';
   } else {
     INITIAL_PLATFORM = 'Android';
   }

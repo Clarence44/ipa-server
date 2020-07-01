@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs
+FROM nikolaik/python-nodejs:python3.7-nodejs12
 
 MAINTAINER Steven <s@ineva.cn>
 

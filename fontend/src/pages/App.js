@@ -43,7 +43,7 @@ function App(props) {
   useEffect(() => {
     if (!utils.isPC) {
       if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-        dispatch(changePlatform('IOS'));
+        dispatch(changePlatform('ios'));
       } else {
         dispatch(changePlatform('Android'));
       }
@@ -74,7 +74,7 @@ function App(props) {
   const Tabs = (props) => {
     return (
       <div className="tabs">
-        {['Android', 'IOS'].map((item) => (
+        {['Android', 'ios'].map((item) => (
           <div
             className={item === state.platform ? 'tab on' : 'tab'}
             onClick={() => {

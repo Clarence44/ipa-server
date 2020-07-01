@@ -43,7 +43,7 @@ const list = (publicURL, platform) => {
 
   appList
     .filter((i) => {
-      if (platform === 'IOS') {
+      if (platform === 'ios') {
         return i.platform === platform || i.platform === undefined;
       } else {
         return i.platform === platform;
@@ -51,7 +51,7 @@ const list = (publicURL, platform) => {
     })
     .map((i) => {
       if (i.platform === undefined) {
-        i.platform = 'IOS';
+        i.platform = 'ios';
       }
       return i;
     })
@@ -164,7 +164,7 @@ const add = async (file) => {
     size: (await fs.lstat(file)).size,
     noneIcon: !iconFile,
     channel: info['channel'],
-    platform: 'IOS',
+    platform: 'ios',
   };
   appList.unshift(app);
   await fs.writeJson(appListFile, appList);
@@ -195,12 +195,12 @@ const find = (id, publicURL, platform) => {
   const currentData = appList.find((row) => row.id === id);
 
   if (!currentData.platform) {
-    currentData.platform = 'IOS';
+    currentData.platform = 'ios';
   }
 
   const history = appList
     .filter((i) => {
-      if (platform === 'IOS') {
+      if (platform === 'ios') {
         return i.platform === platform || i.platform === undefined;
       } else {
         return i.platform === platform;
@@ -209,7 +209,7 @@ const find = (id, publicURL, platform) => {
     .filter((r) => r.identifier === currentData.identifier)
     .map((i) => {
       if (i.platform === undefined) {
-        i.platform = 'IOS';
+        i.platform = 'ios';
       }
       return i;
     })
