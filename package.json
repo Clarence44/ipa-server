@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "app-info-parser": "^0.3.10",
+    "base64-img": "^1.0.4",
     "busboy": "^0.2.14",
+    "child_process": "^1.0.2",
     "decompress-zip": "^0.3.0",
     "fs-extra": "^5.0.0",
     "koa": "^2.4.1",

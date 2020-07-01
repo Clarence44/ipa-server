@@ -1,4 +1,4 @@
-FROM node:8.4.0
+FROM nikolaik/python-nodejs
 MAINTAINER Steven <s@ineva.cn>
 
 # set work dir
