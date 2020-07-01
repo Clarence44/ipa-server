@@ -42,7 +42,19 @@ const list = (publicURL, platform) => {
   const backList = [];
 
   appList
-    .filter((i) => i.platform === platform)
+    .filter((i) => {
+      if (platform === 'IOS') {
+        return i.platform === platform || i.platform === undefined;
+      } else {
+        return i.platform === platform;
+      }
+    })
+    .map((i) => {
+      if (i.platform === undefined) {
+        i.platform = 'IOS';
+      }
+      return i;
+    })
     .map((row) => itemInfo(row, publicURL))
     .map((row) => {
       let app = backList.find((r) => r.identifier === row.identifier);
@@ -179,11 +191,28 @@ const add = async (file) => {
   await fs.remove(tmpDir);
 };
 
-const find = (id, publicURL, platform, identifier) => {
+const find = (id, publicURL, platform) => {
+  const currentData = appList.find((row) => row.id === id);
+
+  if (!currentData.platform) {
+    currentData.platform = 'IOS';
+  }
 
   const history = appList
-    .filter((i) => i.platform === platform)
-    .filter((r) => r.identifier === identifier)
+    .filter((i) => {
+      if (platform === 'IOS') {
+        return i.platform === platform || i.platform === undefined;
+      } else {
+        return i.platform === platform;
+      }
+    })
+    .filter((r) => r.identifier === currentData.identifier)
+    .map((i) => {
+      if (i.platform === undefined) {
+        i.platform = 'IOS';
+      }
+      return i;
+    })
     .map((r) =>
       Object.assign({}, itemInfo(r, publicURL), {
         current: r.id === id,
@@ -194,16 +223,11 @@ const find = (id, publicURL, platform, identifier) => {
     return {};
   }
 
-  const currentData = appList
-    .filter((i) => i.platform === platform)
-    .filter((r) => r.identifier === identifier)
-    .find((row) => row.id === id);
-
-  if (!currentData) {
+  if (currentData.platform !== platform) {
     const data = itemInfo(
       appList
         .filter((i) => i.platform === platform)
-        .filter((r) => r.identifier === identifier)[0],
+        .filter((r) => r.identifier === currentData.identifier)[0],
       publicURL
     );
     data.history = history.map((r) => {
@@ -226,12 +250,12 @@ const initAppList = () => {
     const list = fs.readJsonSync(appListFile);
     list.map((row) => appList.push(row));
   }
-}
+};
 
 module.exports = {
   initAppList,
   list,
   find,
   add,
-  appList
+  appList,
 };

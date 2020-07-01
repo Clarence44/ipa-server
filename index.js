@@ -43,8 +43,8 @@ app.use(
   router.get('/api/info', async (ctx) => {
     // ctx.body = { message: 'hello' };
     ipaManager.initAppList();
-    const { p, i, id } = ctx.request.query;
-    ctx.body = ipaManager.find(id, publicURL(ctx), p, i);
+    const { p, id } = ctx.request.query;
+    ctx.body = ipaManager.find(id, publicURL(ctx), p);
   })
 );
 

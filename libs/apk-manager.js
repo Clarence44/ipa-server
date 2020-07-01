@@ -10,7 +10,7 @@ const uploadDir = config.uploadDir;
 fs.ensureDir(uploadDir);
 
 // store data
-// const appListFile = path.join(uploadDir, 'appList.json');
+const appListFile = path.join(uploadDir, 'appList.json');
 const appList = require('./ipa-manager').appList;
 
 // init appList

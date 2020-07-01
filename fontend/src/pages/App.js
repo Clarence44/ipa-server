@@ -37,7 +37,6 @@ function App(props) {
   const [list, setList] = useState([]);
   const canvasRef = useRef();
   const id = query().id || '';
-  const i = query().i;
   const state = useSelector((state) => state);
   let dispatch = useDispatch();
 
@@ -56,7 +55,7 @@ function App(props) {
   const getData = () => {
     utils
       .fetch(
-        `/api/info?id=${id}&i=${i}&v=${parseInt(
+        `/api/info?id=${id}&v=${parseInt(
           new Date().getTime() / 1000
         )}&p=${state.platform}`
       )

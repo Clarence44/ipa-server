@@ -9,7 +9,7 @@ function List(props) {
     <div
       className="row"
       onClick={() => {
-        props.history.push(`/app?id=${data.id}&i=${data.identifier}`);
+        props.history.push(`/app?id=${data.id}`);
         // window.location.reload();
       }}
     >
