@@ -5,7 +5,7 @@ import utils from '../utils/utils';
 // import http from '../utils/http';
 import 'weui';
 import { alert } from 'weui.js';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import List from '../components/List';
 import { changePlatform } from '../redux';
 
@@ -39,7 +39,6 @@ function App(props) {
   const state = useSelector((state) => state);
   let dispatch = useDispatch();
   const [uploading, setUploading] = useState(false);
-  // const [platform, setPlatform] = useState('Android');
   const [words, setWords] = useState(utils.langString('Upload'));
 
   const btnRef = useRef();
@@ -94,6 +93,7 @@ function App(props) {
         {['Android', 'IOS'].map((item) => (
           <div
             className={item === state.platform ? 'tab on' : 'tab'}
+            key={item}
             onClick={() => {
               dispatch(changePlatform(item));
             }}
@@ -118,10 +118,6 @@ function App(props) {
           onChange={handleUpload}
         />
         <div className="add-btn">
-          {/* <div className="tabs">
-            <div className="tab on">安卓</div>
-            <div className="tab">苹果</div>
-          </div> */}
           <Tabs />
           <div
             className="button"

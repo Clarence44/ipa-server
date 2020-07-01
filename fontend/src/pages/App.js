@@ -61,6 +61,7 @@ function App(props) {
         )}&p=${state.platform}`
       )
       .then((row) => {
+        if (!row.history) return;
         setAppData(row);
         setList(row.history);
         createQRCode(canvasRef.current);

@@ -10,7 +10,6 @@ export function changePlatform(text) {
 }
 
 let INITIAL_PLATFORM = '';
-console.log(isPC());
 if (isPC()) {
   INITIAL_PLATFORM = sessionStorage.getItem('platform')
     ? sessionStorage.getItem('platform')

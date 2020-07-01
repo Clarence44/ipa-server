@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect,BrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
 import App from '../pages/App';
+import Key from '../pages/Key';
 // import Details from '../pages/Details';
 // import Login from '../pages/Login';
 import { useSelector } from 'react-redux';
@@ -9,6 +10,7 @@ import { useSelector } from 'react-redux';
 const Routers = [
   { path: '/app', name: 'App', component: App, auth: false },
   { path: '/', name: 'Home', component: Home, auth: false },
+  { path: '/key', name: 'Key', component: Key, auth: false },
   // { path: '/details', name: 'Details', component: Details, auth: false },
   // { path: '/login', name: 'Login', component: Login },
 ];

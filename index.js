@@ -92,6 +92,16 @@ app.use(
   })
 );
 
+app.use(
+  router.get('/key', async (ctx) => {
+    ctx.response.status = 200;
+    ctx.response.type = 'text/html;utf-8';
+    ctx.response.body = fs.createReadStream(
+      path.join(__dirname, '/fontend/dist/index.html')
+    );
+  })
+);
+
 // catch crash
 app.on('error', (err) => {
   console.error('*** SERVER ERROR ***\n', err);
