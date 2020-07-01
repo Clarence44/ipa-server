@@ -1,6 +1,8 @@
-FROM nikolaik/python-nodejs:python3.7-nodejs12
+FROM node:8.4.0
 
 MAINTAINER Steven <s@ineva.cn>
+
+RUN apt-get update && apt-get install -y python2.7
 
 # set work dir
 WORKDIR /app
@@ -13,4 +15,4 @@ COPY . .
 
 VOLUME /app/upload
 
-CMD ["node", "index.js"]
+ENTRYPOINT ["node", "index.js"]

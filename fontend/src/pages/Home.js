@@ -10,10 +10,12 @@ import List from '../components/List';
 import { changePlatform } from '../redux';
 
 function getApiUrl(path) {
+  console.log(path);
   if (window.localStorage.getItem('ACCESS_KEY')) {
     return (
       path +
-      '?key=' +
+      (path.indexOf('?') >= 0 ? '&' : '?') + 
+      'key=' +
       window.localStorage.getItem('ACCESS_KEY') +
       `&v=${parseInt(new Date().getTime() / 1000)}`
     );
