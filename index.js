@@ -34,6 +34,7 @@ app.use(
     if (!canAccess(ctx)) {
       return;
     }
+    ipaManager.initAppList();
     ctx.body = ipaManager.list(publicURL(ctx), ctx.request.query.p);
   })
 );
@@ -41,6 +42,7 @@ app.use(
 app.use(
   router.get('/api/info', async (ctx) => {
     // ctx.body = { message: 'hello' };
+    ipaManager.initAppList();
     const { p, i, id } = ctx.request.query;
     ctx.body = ipaManager.find(id, publicURL(ctx), p, i);
   })

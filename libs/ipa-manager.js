@@ -12,7 +12,7 @@ fs.ensureDir(uploadDir);
 
 // store data
 const appListFile = path.join(uploadDir, 'appList.json');
-const appList = [];
+let appList = [];
 
 // init appList
 if (fs.pathExistsSync(appListFile)) {
@@ -219,8 +219,19 @@ const find = (id, publicURL, platform, identifier) => {
   return row;
 };
 
+const initAppList = () => {
+  // init appList
+  appList = [];
+  if (fs.pathExistsSync(appListFile)) {
+    const list = fs.readJsonSync(appListFile);
+    list.map((row) => appList.push(row));
+  }
+}
+
 module.exports = {
+  initAppList,
   list,
   find,
   add,
+  appList
 };

@@ -61,7 +61,11 @@ function App(props) {
         )}&p=${state.platform}`
       )
       .then((row) => {
-        if (!row.history) return;
+        if (!row.history) {
+          setAppData({});
+          setList([]);
+          return;
+        }
         setAppData(row);
         setList(row.history);
         createQRCode(canvasRef.current);
@@ -87,7 +91,7 @@ function App(props) {
   };
 
   return (
-    <>
+    <div key={state.platform}>
       <div
         className="plat-tab"
         style={{ display: utils.isPC ? 'block' : 'none' }}
@@ -122,7 +126,7 @@ function App(props) {
           <List data={row} key={row.id} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 export default withRouter(App);
