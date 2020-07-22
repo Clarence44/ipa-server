@@ -75,7 +75,7 @@ app.use(
 // get install plist
 app.use(
   router.get('/plist/:id.plist', async (ctx, id) => {
-    const info = ipaManager.find(id, publicURL(ctx));
+    const info = ipaManager.find(id, publicURL(ctx), 'ios');
     ctx.set(
       'Content-Disposition',
       `attachment; filename=${encodeURI(info.identifier)}.plist`
